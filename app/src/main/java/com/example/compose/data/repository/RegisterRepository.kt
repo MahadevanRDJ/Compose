@@ -2,10 +2,6 @@ package com.example.compose.data.repository
 
 import com.example.compose.data.dao.RegisterDao
 import com.example.compose.data.entity.RegisterEntity
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import javax.inject.Singleton
 
 class RegisterRepository(private val registerDao: RegisterDao) {
 
@@ -14,8 +10,7 @@ class RegisterRepository(private val registerDao: RegisterDao) {
     }
 
     fun getUser(userName: String, passWord: String): RegisterEntity? {
-        var user: RegisterEntity? = null
-        user = try {
+        var user: RegisterEntity? = try {
             registerDao.getUser(userName, passWord)
         } catch (e: Exception) {
             null

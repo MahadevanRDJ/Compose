@@ -129,7 +129,7 @@ fun registerSubmitted(
     context: Context
 ) {
 
-    runBlocking { registerViewModel.addUser(user) }
+    registerViewModel.addUser(user)
     Toast.makeText(context, "User added successfully", Toast.LENGTH_SHORT).show()
 
     navController.navigate(Screen.Login.route)

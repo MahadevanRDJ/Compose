@@ -4,12 +4,19 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.compose.data.entity.RegisterEntity
 import com.example.compose.data.repository.RegisterRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 
 class RegisterViewModel(private val registerRepository: RegisterRepository) : ViewModel() {
 
-    suspend fun addUser(user : RegisterEntity) {
-        registerRepository.insert(user)
+    fun addUser(user: RegisterEntity) {
+        runBlocking {
+            launch(Dispatchers.IO) {
+                registerRepository.insert(user)
+            }
+        }
     }
 
 }

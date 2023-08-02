@@ -15,6 +15,7 @@ import java.lang.StringBuilder
 @HiltViewModel
 class ListCountryViewModel : ViewModel() {
     private var countryList = mutableListOf<Country>()
+
     private var currency = StringBuilder()
 
     fun getCountryList() = countryList.sortedBy { it.name.common }

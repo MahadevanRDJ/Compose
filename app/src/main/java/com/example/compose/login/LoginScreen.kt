@@ -1,6 +1,5 @@
 package com.example.compose.login
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
 import android.widget.Toast
@@ -56,7 +55,6 @@ import com.example.compose.Screen
 import com.example.compose.data.util.UserUtils
 import com.example.compose.ui.theme.ComposeTheme
 
-@SuppressLint("RememberReturnType")
 @Composable
 fun LoginScreen(
     loginViewModel: LoginViewModel,
@@ -72,7 +70,6 @@ fun LoginScreen(
     val password = remember {
         mutableStateOf(TextFieldValue())
     }
-
 
     Surface(
         modifier
@@ -99,10 +96,14 @@ fun LoginScreen(
         ) {
 
 
-            UserName(userName = userName, onUserNameChange = { userName.value = it })
+            UserName(
+                userName = userName,
+                onUserNameChange = { userName.value = it })
             Spacer(modifier = modifier.height(20.dp))
 
-            PassWord(password = password, onPassWordChange = { password.value = it })
+            PassWord(
+                password = password,
+                onPassWordChange = { password.value = it })
 
             Spacer(modifier = modifier.height(20.dp))
             SignUp(
@@ -117,12 +118,13 @@ fun LoginScreen(
                     )
                 }
             )
+
+
             Text(
                 text = "or",
                 style = MaterialTheme.typography.titleSmall,
                 color = Color.DarkGray,
             )
-
 
             OutlinedButton(
                 modifier = Modifier
